@@ -1,0 +1,48 @@
+<h1 class="text-primary">Numeros Romanos a Enteros</h1>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="row mt-5" >
+            <div class="col-lg-12 offset-lg-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <span class="titulo">Ingrese el valor romano para hacer el calculo</span>
+                        <form [formGroup]="numeroForm" class="mt-3" (ngSubmit)="caluclar()">
+                            
+                            <div class=" col-lg-12 mb-3">
+                              <input type="text" formControlName="numero"
+                                class="form-control form-control-lg" placeholder="Valor">
+                                <div class="text-danger" 
+                                    *ngIf="numeroForm.get('numero')?.hasError('required') && numeroForm.get('numero')?.touched">
+                                    <span>El numero <strong>es requerido</strong></span>
+                                </div>
+                            </div>
+                          
+                            <div class="mb-3">
+                                <button type="submit" [disabled]="numeroForm.invalid" class="btn btn-success btn-lg float-end">Calcular</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5" >
+            <div class="col-lg-12 offset-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <span class="titulo">Resultado</span>
+                        <div class=" col-lg-12 mb-3">
+                            <pre>
+                                <p>Input: {{ numeroForm.get('numero').value}}</p>
+                                <p>Ouput: {{output}}</p>
+                                <p>Nombre: {{fulname}}</p>
+                            </pre>    
+
+                            <button class="btn btn-primary" (click)="enviarDatos()">Enviar Datos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
